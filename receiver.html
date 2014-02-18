@@ -69,14 +69,20 @@ limitations under the License.
 				castReceiverManager.onSenderConnected = function(event) {
 					console.log('Received Sender Connected event: ' + event.data);
 					console.log(window.castReceiverManager.getSender(event.data).userAgent);
-					displayPlayerConnection(1, true);
+
+					var playerNumber = window.castReceiverManager.getSenders().length + 1;
+					displayPlayerConnection(playerNumber, true);
 				};
 
 				// handler for 'senderdisconnected' event
 				castReceiverManager.onSenderDisconnected = function(event) {
 					console.log('Received Sender Disconnected event: ' + event.data);
-					if (window.castReceiverManager.getSenders().length == 0) {
+					var playerNumber = window.castReceiverManager.getSenders().length + 1;
+
+					if (playerNumber == 1) {
 						window.close();
+					} else {
+						displayPlayerConnection(playerNumber, false);
 					}
 				};
 
@@ -92,7 +98,7 @@ limitations under the License.
 				window.messageBus.onMessage = function(event) {
 					console.log('Message [' + event.senderId + ']: ' + event.data);
 					// display the message from the sender
-					displayText("hey" + event.data);
+					displayText(event.data);
 					// inform all senders on the CastMessageBus of the incoming message event
 					// sender message listener will be invoked
 					window.messageBus.send(event.senderId, event.data);
@@ -113,7 +119,7 @@ limitations under the License.
 
 			function displayPlayerConnection(playerNumber, connected) {
 				console.log("player " + playerNumber + "connected ? " + connected);
-				document.getElementById("player1").innerHTML = "player " + playerNumber + "c?" + connected;
+				document.getElementById("player" + playerNumber).innerHTML = "player " + playerNumber + "c?" + connected;
 				window.castReceiverManager.setApplicationState("huh?");
 			}
 		</script>

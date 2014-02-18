@@ -43,6 +43,15 @@ limitations under the License.
 		<DIV id="player1">
 			Player 1
 		</DIV>
+		<DIV id="player2">
+			Player 2
+		</DIV>
+		<DIV id="player3">
+			Player 3
+		</DIV>
+		<DIV id="player4">
+			Player 4
+		</DIV>
 		<script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
 		<script type="text/javascript">
 			window.onload = function() {
@@ -60,6 +69,7 @@ limitations under the License.
 				castReceiverManager.onSenderConnected = function(event) {
 					console.log('Received Sender Connected event: ' + event.data);
 					console.log(window.castReceiverManager.getSender(event.data).userAgent);
+					displayPlayerConnection(1, true);
 				};
 
 				// handler for 'senderdisconnected' event
@@ -100,6 +110,12 @@ limitations under the License.
 				document.getElementById("message").innerHTML = text;
 				window.castReceiverManager.setApplicationState(text);
 			};
+
+			function displayPlayerConnection(playerNumber, connected) {
+				console.log("player " + playerNumber + "connected ? " + connected);
+				document.getElementById("player1").innerHTML = "player " + playerNumber + "c?" + connected;
+				window.castReceiverManager.setApplicationState("huh?");
+			}
 		</script>
 	</body>
 </html>

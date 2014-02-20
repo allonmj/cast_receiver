@@ -41,14 +41,16 @@ function start() {
 				// handler for the CastMessageBus message event
 				window.messageBus.onMessage = function(event) {
 					console.log('Message [' + event.senderId + ']: ' + event.data);
-					document.getElementById("player2").innerHTML = event.senderId + " answered " + event.data;
-					if(event.data=='c'){
-						document.getElementById("player4").innerHTML = "Correct!";
-					} else {
-						document.getElementById("player4").innerHTML = "Wrong!";
+					if(event.data=='a'||event.data=='b'||event.data=='c'||event.data=='d'){
+						document.getElementById("player2").innerHTML = event.senderId + " answered " + event.data;
+						if(event.data=='c'){
+							document.getElementById("player4").innerHTML = "Correct!";
+						} else {
+							document.getElementById("player4").innerHTML = "Wrong!";
+						}
 					}
 					// display the message from the sender
-					displayText(event.data);
+				//	displayText(event.data);
 					// inform all senders on the CastMessageBus of the incoming message event
 					// sender message listener will be invoked
 					window.messageBus.send(event.senderId, event.data);

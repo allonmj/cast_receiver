@@ -41,7 +41,7 @@ function start() {
 				// handler for the CastMessageBus message event
 				window.messageBus.onMessage = function(event) {
 					console.log('Message [' + event.senderId + ']: ' + event.data);
-					if(event.data=='a'||event.data=='b'||event.data=='c'||event.data=='d'){
+					if(event.data==='a'||event.data==='b'||event.data==='c'||event.data==='d'){
 						document.getElementById("player2").innerHTML = event.senderId + " answered " + event.data;
 						if(event.data=='c'){
 							document.getElementById("player4").innerHTML = "Correct!";

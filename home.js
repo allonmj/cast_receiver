@@ -41,6 +41,8 @@ function start() {
 				// handler for the CastMessageBus message event
 				window.messageBus.onMessage = function(event) {
 					console.log('Message [' + event.senderId + ']: ' + event.data);
+					document.getElementById("player1").innerHTML = event.senderId;
+					document.getElementById("player3").innerHTML = event.data;
 					// display the message from the sender
 					displayText(event.data);
 					// inform all senders on the CastMessageBus of the incoming message event

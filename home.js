@@ -65,4 +65,5 @@ function start() {
 				console.log("player " + playerNumber + "connected ? " + connected);
 				document.getElementById("player" + playerNumber).innerHTML = "player " + playerNumber + "c?" + connected;
 				window.castReceiverManager.setApplicationState("huh?");
-			}
+			};
+		};

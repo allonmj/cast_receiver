@@ -1,17 +1,58 @@
 body {
-  overflow: hidden;
+	position : absolute;
+	background-color : red;
 }
-			
-div {
-  height: 720PX;
-  width: 1280PX;
-  text-align: center;
-  border: 0px solid silver;
-  display: table-cell;
-  vertical-align: middle;
-  color: #FFFFFF;
-  background-color: #000000;
-  font-weight: bold;
-  font-family: Verdana, Geneva, sans-serif;
-  font-size: 40px;
+/* the border */
+#top, #bottom, #left, #right {
+	background : #a5ebff;
+	position : fixed;
+}
+#left, #right {
+	top : 0; 
+	bottom : 0;
+	width : 15px;
+}
+#left { 
+	left : 0; 
+}
+#right {
+	right :  0; 
+}	
+#top, #bottom  {
+	left : 0; 
+	right : 0;
+	height : 15px;
+}
+#top  { 
+	top : 0; 
+}
+#bottom  { 
+	bottom : 0; 
+}
+/* the title */
+#outerTitle {
+	position : fixed;
+	background : gray;
+	left : 20px;
+	right : 20px;
+	top : 20px;
+	height : 65px;
+}
+/* the question */
+#outerQuestion {
+	position : fixed;
+	background : gray;
+	left : 20px;
+	right : 20px;
+	top : 90px;
+	height : 400px;
+}
+/* the players*/
+#outerPlayers {
+	position : fixed;
+	background : gray;
+	left : 20px;
+	right : 20px;
+	bottom : 20px;
+	height : 250px;
 }

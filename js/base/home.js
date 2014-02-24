@@ -47,8 +47,14 @@ function start() {
 		console.log('Message [' + event.senderId + ']: '
 				+ JSON.stringify(event.data));
 
-		if (event.data.requestType = "CAH") {
-
+		if (event.data.requestType === "CAH") {
+			console.log("RequestType is 'CardsAgainstHumanity'");
+			$("#outputDiv").append("RequestType is 'CardsAgainstHumanity'");
+			$.getScript("js/service/cah.js", function(){
+				console.log("loaded cah.js");
+				$("#outputDiv").append("loaded cah.js");
+				cah(event.data);
+			});
 		}
 
 		if (event.data === 'a' || event.data === 'b' || event.data === 'c'

@@ -1,58 +1,64 @@
 body {
-	position : absolute;
-	background-color : red;
+	position: absolute;
+	background-color: red;
 }
 /* the border */
-#top, #bottom, #left, #right {
-	background : #a5ebff;
-	position : fixed;
+#top,#bottom,#left,#right {
+	background: #a5ebff;
+	position: fixed;
 }
-#left, #right {
-	top : 0; 
-	bottom : 0;
-	width : 15px;
+
+#left,#right {
+	top: 0;
+	bottom: 0;
+	width: 15px;
 }
-#left { 
-	left : 0; 
+
+#left {
+	left: 0;
 }
+
 #right {
-	right :  0; 
-}	
-#top, #bottom  {
-	left : 0; 
-	right : 0;
-	height : 15px;
+	right: 0;
 }
-#top  { 
-	top : 0; 
+
+#top,#bottom {
+	left: 0;
+	right: 0;
+	height: 15px;
 }
-#bottom  { 
-	bottom : 0; 
+
+#top {
+	top: 0;
+}
+
+#bottom {
+	bottom: 0;
 }
 /* the title */
 #outerTitle {
-	position : fixed;
-	background : gray;
-	left : 20px;
-	right : 20px;
-	top : 20px;
-	height : 65px;
+	position: fixed;
+	background: gray;
+	left: 20px;
+	right: 20px;
+	top: 20px;
+	height: 65px;
 }
 /* the question */
 #outerQuestion {
-	position : fixed;
-	background : gray;
-	left : 20px;
-	right : 20px;
-	top : 90px;
-	height : 400px;
+	position: fixed;
+	background: gray;
+	left: 20px;
+	right: 20px;
+	top: 90px;
+	height: 400px;
 }
 /* the players*/
 #outerPlayers {
-	position : fixed;
-	background : gray;
-	left : 20px;
-	right : 20px;
-	bottom : 20px;
-	height : 250px;
+	position: fixed;
+	background: gray;
+	left: 20px;
+	right: 20px;
+	bottom: 20px;
+	height: 250px;
 }

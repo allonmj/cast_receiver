@@ -54,7 +54,7 @@ body {
 	height: 400px;
 }
 /* the players*/
-#outerPlayers {
+#outputDiv {
 	position: fixed;
 	background: gray;
 	left: 20px;

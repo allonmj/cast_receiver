@@ -22,3 +22,20 @@ event.data.contextData = {
  //include context information like time, phone information, etc. This will be common information to be used across all request apps.
   
 }
+
+/**
+ * CAH specific schema
+ *
+ */
+
+event.data.player = {
+	//JSON for when a player disconnects
+	add = bool,	//whether or not this is a new player being added.  OPTIONAL
+	remove = bool, //whether or not this is a player being removed.  OPTIONAL
+	playerId = "PLAYER'S NAME",
+}
+
+event.data.playerCard = {
+	//JSON for when a player plays a white card
+
+}

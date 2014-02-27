@@ -2,19 +2,19 @@ function start() {
 	cast.receiver.logger.setLevelValue(0);
 	window.castReceiverManager = cast.receiver.CastReceiverManager
 			.getInstance();
-	console.log('Starting Receiver Manager');
+	log('Starting Receiver Manager');
 
 	// handler for the 'ready' event
 	castReceiverManager.onReady = function(event) {
-		console.log('Received Ready event: ' + JSON.stringify(event.data));
+		log('Received Ready event: ' + JSON.stringify(event.data));
 		window.castReceiverManager
 				.setApplicationState("Application status is ready...");
 	};
 
 	// handler for 'senderconnected' event
 	castReceiverManager.onSenderConnected = function(event) {
-		console.log('Received Sender Connected event: ' + event.data);
-		console.log(window.castReceiverManager.getSender(event.data).userAgent);
+		log('Received Sender Connected event: ' + event.data);
+		log(window.castReceiverManager.getSender(event.data).userAgent);
 
 		var playerNumber = window.castReceiverManager.getSenders().length + 1;
 		displayPlayerConnection(playerNumber, true);
@@ -22,7 +22,7 @@ function start() {
 
 	// handler for 'senderdisconnected' event
 	castReceiverManager.onSenderDisconnected = function(event) {
-		console.log('Received Sender Disconnected event: ' + event.data);
+		log('Received Sender Disconnected event: ' + event.data);
 		var playerNumber = window.castReceiverManager.getSenders().length + 1;
 
 		if (playerNumber == 1) {
@@ -34,7 +34,7 @@ function start() {
 
 	// handler for 'systemvolumechanged' event
 	castReceiverManager.onSystemVolumeChanged = function(event) {
-		console.log('Received System Volume Changed event: '
+		log('Received System Volume Changed event: '
 				+ event.data['level'] + ' ' + event.data['muted']);
 	};
 
@@ -44,15 +44,13 @@ function start() {
 
 	// handler for the CastMessageBus message event
 	window.messageBus.onMessage = function(event) {
-		console.log('Message [' + event.senderId + ']: '
+		log('Message [' + event.senderId + ']: '
 				+ JSON.stringify(event.data));
 
 		if (event.data.requestType === "CAH") {
-			console.log("RequestType is 'CardsAgainstHumanity'");
-			$("#outputDiv").append("RequestType is 'CardsAgainstHumanity'");
+			log("RequestType is 'CardsAgainstHumanity'");
 			$.getScript("js/service/cah.js", function(){
-				console.log("loaded cah.js");
-				$("#outputDiv").append("loaded cah.js");
+				log("loaded cah.js");
 				cah(event.data);
 			});
 		}
@@ -78,20 +76,28 @@ function start() {
 	window.castReceiverManager.start({
 		statusText : "Application is starting"
 	});
-	console.log('Receiver Manager started');
+	log('Receiver Manager started');
 };
 
 // utility function to display the text message in the input field
 function displayText(text) {
-	console.log(text);
+	log(text);
 	document.getElementById("message").innerHTML = text;
 	window.castReceiverManager.setApplicationState(text);
 };
 
 function displayPlayerConnection(playerNumber, connected) {
-	console.log("player " + playerNumber + "connected ? " + connected);
+	log("player " + playerNumber + "connected ? " + connected);
 	document.getElementById("player" + playerNumber).innerHTML = "player "
 			+ playerNumber + "c?" + connected;
 	window.castReceiverManager.setApplicationState("huh?");
 };
+
+function log(message, divId){
+	log(message);
+	if(null === divId || divId === ""){
+		divId = "outputDiv";
+	}
+	$("#"+divId).text($("#"+divId).text()+"\n"+message);
+}
 

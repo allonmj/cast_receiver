@@ -51,7 +51,7 @@ function start() {
 		if (event.data.requestType === "CAH") {
 			log("RequestType is 'CardsAgainstHumanity'");
 			loadAdditionalCahFiles();
-			cah(event.data);
+			cah(event.data.requestData);
 
 		}
 
@@ -108,7 +108,7 @@ function loadAdditionalCahFiles() {
 }
 
 function log(message, divId) {
-	log(message);
+	//log(message);
 	if (null === divId || divId === "") {
 		divId = "outputDiv";
 	}

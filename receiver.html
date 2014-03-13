@@ -1,32 +1,30 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<link rel="stylesheet" href="css/base/home.css" type="text/css"/>
-		<title>Cast Hello Text</title>
-		<script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
-		<script type="text/javascript" src="js/base/home.js"></script>
-		<script type="text/javascript" src="js/base/jquery-1.11.0.min.js"></script>
-		<script type="text/javascript">
-			$("#" + "outputDiv").val($("#" + "outputDiv").val() + "\n" + "ADDING A NEW ROW!!!!");		
-		</script>
-	</head>
-	<body onload="start()">
-		<div id="left"></div>
-		<div id="right"></div>
-		<div id="top"></div>
-		<div id="bottom"></div>
-		<div id="outerTitle">
-			GUESS GAME!!!
-		</div>
-		<div id="outerQuestion">
-			Question of the day
-		</div>
-		<div id="outerPlayers">
-			Hello World
-		</div>
-		<textarea id="outputDiv" rows='20' cols='120'>
+<head>
+<link rel="stylesheet" href="css/base/home.css" type="text/css" />
+<title>Cast Hello Text</title>
+<script type="text/javascript"
+	src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
+<script type="text/javascript" src="js/base/home.js"></script>
+<script type="text/javascript" src="js/base/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#" + "outputDiv").val(
+				$("#" + "outputDiv").val() + "\n" + "ADDING A NEW ROW!!!!");
+	});
+</script>
+</head>
+<body onload="start()">
+	<div id="left"></div>
+	<div id="right"></div>
+	<div id="top"></div>
+	<div id="bottom"></div>
+	<div id="outerTitle">GUESS GAME!!!</div>
+	<div id="outerQuestion">Question of the day</div>
+	<div id="outerPlayers">Hello World</div>
+	<textarea id="outputDiv" rows='20' cols='120'>
 			OMG THIS IS WHERE THE OUTPUT GOES!!!!  I made a change
 		</textarea>
-		
-	</body>
+
+</body>
 </html>

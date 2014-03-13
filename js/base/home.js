@@ -1,3 +1,5 @@
+var isLoadedAdditionalCahFiles = false;
+
 function start() {
 	cast.receiver.logger.setLevelValue(0);
 	window.castReceiverManager = cast.receiver.CastReceiverManager
@@ -34,8 +36,8 @@ function start() {
 
 	// handler for 'systemvolumechanged' event
 	castReceiverManager.onSystemVolumeChanged = function(event) {
-		log('Received System Volume Changed event: '
-				+ event.data['level'] + ' ' + event.data['muted']);
+		log('Received System Volume Changed event: ' + event.data['level']
+				+ ' ' + event.data['muted']);
 	};
 
 	// create a CastMessageBus to handle messages for a custom namespace
@@ -44,15 +46,13 @@ function start() {
 
 	// handler for the CastMessageBus message event
 	window.messageBus.onMessage = function(event) {
-		log('Message [' + event.senderId + ']: '
-				+ JSON.stringify(event.data));
+		log('Message [' + event.senderId + ']: ' + JSON.stringify(event.data));
 
 		if (event.data.requestType === "CAH") {
 			log("RequestType is 'CardsAgainstHumanity'");
-			$.getScript("js/service/cah.js", function(){
-				log("loaded cah.js");
-				cah(event.data);
-			});
+			loadAdditionalCahFiles();
+			cah(event.data);
+
 		}
 
 		if (event.data === 'a' || event.data === 'b' || event.data === 'c'
@@ -93,11 +93,27 @@ function displayPlayerConnection(playerNumber, connected) {
 	window.castReceiverManager.setApplicationState("huh?");
 };
 
-function log(message, divId){
-	log(message);
-	if(null === divId || divId === ""){
-		divId = "outputDiv";
+function loadAdditionalCahFiles() {
+
+	if (!isLoadedAdditionalCahFiles) {
+		
+		$.each(listOfCahFilesToLoad, function(index, value){
+			$.getScript(cah_dir_home+value, function(){
+				log("loaded " +value);
+			});
+		});
+		
+		isLoadedAdditionalCahFiles = true;
 	}
-	$("#"+divId).text($("#"+divId).text()+"\n"+message);
 }
 
+function log(message, divId) {
+	log(message);
+	if (null === divId || divId === "") {
+		divId = "outputDiv";
+	}
+	$("#" + divId).val($("#" + divId).val() + "\n" + message);
+}
+
+var cah_dir_home = "js/service/";
+var listOfCahFilesToLoad[] = ["cah.js", "cah_player.js", "cah_card.js"];

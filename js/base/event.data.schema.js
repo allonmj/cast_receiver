@@ -39,3 +39,7 @@ event.data.playerCard = {
 	//JSON for when a player plays a white card
 
 }
+
+event.data.sentenceCard = {
+	//JSON for when a player request to draw a sentence card
+}

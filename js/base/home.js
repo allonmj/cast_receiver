@@ -46,9 +46,9 @@ function start() {
 
 	// handler for the CastMessageBus message event
 	window.messageBus.onMessage = function(event) {
-		log('Message [' + event.senderId + ']: ' + JSON.stringify(event.data));
+	//	log('Message [' + event.senderId + ']: ' + JSON.stringify(event.data));
 
-		if (event.data.requestType === "CAH") {
+	/*	if (event.data.requestType === "CAH") {
 			log("RequestType is 'CardsAgainstHumanity'");
 			loadAdditionalCahFiles();
 			cah(event.data.requestData);
@@ -64,13 +64,13 @@ function start() {
 			} else {
 				document.getElementById("player4").innerHTML = "Wrong!";
 			}
-		}
+		}*/
 		// display the message from the sender
 		// displayText(event.data);
 		// inform all senders on the CastMessageBus of the incoming message
 		// event
 		// sender message listener will be invoked
-		window.messageBus.send(event.senderId, event.data);
+	//	window.messageBus.send(event.senderId, event.data);
 	};
 	// initialize the CastReceiverManager with an application status message
 	window.castReceiverManager.start({

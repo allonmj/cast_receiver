@@ -5,10 +5,13 @@ function start() {
 	window.castReceiverManager = cast.receiver.CastReceiverManager
 			.getInstance();
 	log('Starting Receiver Manager');
+	console.log('Starting Receiver Manager');
 
 	// handler for the 'ready' event
 	castReceiverManager.onReady = function(event) {
 		log('Received Ready event: ' + JSON.stringify(event.data));
+		console.log('Received Ready event: ' + JSON.stringify(event.data));
+
 		window.castReceiverManager
 				.setApplicationState("Application status is ready...");
 	};
@@ -16,6 +19,8 @@ function start() {
 	// handler for 'senderconnected' event
 	castReceiverManager.onSenderConnected = function(event) {
 		log('Received Sender Connected event: ' + event.data);
+		console.log('Received Sender Connected event: ' + event.data);
+
 		log(window.castReceiverManager.getSender(event.data).userAgent);
 
 		var playerNumber = window.castReceiverManager.getSenders().length + 1;
@@ -25,6 +30,8 @@ function start() {
 	// handler for 'senderdisconnected' event
 	castReceiverManager.onSenderDisconnected = function(event) {
 		log('Received Sender Disconnected event: ' + event.data);
+		console.log('Received Sender Disconnected event: ' + event.data);
+
 		var playerNumber = window.castReceiverManager.getSenders().length + 1;
 
 		if (playerNumber == 1) {
@@ -47,6 +54,7 @@ function start() {
 	// handler for the CastMessageBus message event
 	window.messageBus.onMessage = function(event) {
 		log('Message [' + event.senderId + ']: ' + JSON.stringify(event.data), 'outputDiv');
+		console.log('Message [' + event.senderId + ']: ' + JSON.stringify(event.data), 'outputDiv');
 
 		if (event.data.requestType === "CAH") {
 			log("RequestType is 'CardsAgainstHumanity'");

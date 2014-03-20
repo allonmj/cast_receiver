@@ -46,7 +46,7 @@ function start() {
 
 	// handler for the CastMessageBus message event
 	window.messageBus.onMessage = function(event) {
-		log('Message [' + event.senderId + ']: ' + JSON.stringify(event.data));
+		log('Message [' + event.senderId + ']: ' + JSON.stringify(event.data), 'outputDiv');
 
 		if (event.data.requestType === "CAH") {
 			log("RequestType is 'CardsAgainstHumanity'");
